@@ -5,12 +5,19 @@ const fetchUserDetails = async () => {
     try {
         const response = await Axios({
             ...SummaryApi.userDetail
-        })
-        return response.data.data
+        });
+
+        if (response?.data?.error) {
+            console.error("Backend error:", response.data.message);
+            return null; 
+        }
+
+        return response.data.data;
+
     } catch (error) {
-        console.log(error);
-
+        console.error("fetchUserDetails error:", error?.response?.data?.message || error.message);
+        return null; 
     }
-}
+};
 
-export default fetchUserDetails
+export default fetchUserDetails;

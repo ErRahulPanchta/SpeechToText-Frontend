@@ -1,26 +1,34 @@
-export const baseURL="http://localhost:8080"
+export const baseURL = "http://localhost:8080"
 
-const SummaryApi={
-    register:{
-        url:"/user/register",
-        method:"post"
+const SummaryApi = {
+    register: {
+        url: "/user/register",
+        method: "post"
     },
-    login:{
-        url:"/user/login",
-        method:"post"
+    login: {
+        url: "/user/login",
+        method: "post"
     },
-    refreshToken:{
-        url:"/user/refresh-token",
-        method:"post"
+    refreshToken: {
+        url: "/user/refresh-token",
+        method: "post"
     },
-    userDetail:{
-        url:"/user/user-details",
-        method:"get"
+    userDetail: {
+        url: "/user/user-details",
+        method: "get"
     },
-    logout:{
-        url:"/user/logout",
-        method:"get"
-    }
+    logout: {
+        url: "/user/logout",
+        method: "get"
+    },
+    uploadAudio: {
+        url: "/audio/upload",
+        method: "post"
+    },
+    audioDetail: (id) => ({
+        url: `/audio/audio-details/${id}`,
+        method: "get"
+    })
 }
 
 export default SummaryApi
