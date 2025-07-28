@@ -28,6 +28,14 @@ const SummaryApi = {
     audioDetail: (id) => ({
         url: `/audio/audio-details/${id}`,
         method: "get"
+    }),
+    audioHistory: {
+        url: "/audio/history",
+        method: "get"
+    },
+    deleteAudioHistory: (id) => ({
+        url: `/audio/${id}`,
+        method: "delete"
     })
 }
 

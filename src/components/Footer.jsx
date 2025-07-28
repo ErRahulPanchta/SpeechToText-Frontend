@@ -1,12 +1,11 @@
-
 const Footer = () => {
     return (
-        <footer className=' border-slate-400 w-[75vw] ml-auto flex justify-center h-[3vh] items-center'>
-            <div className=' flex justify-center items-center'>
-                <p className='text-slate-200'>All Rights Reserved &copy; 2025 SpeechToText</p>
-            </div>
+        <footer className='border-t border-slate-600 w-[full] lg:w-[75vw] lg:ml-auto mx-auto flex justify-center items-center h-[3vh] bg-slate-900'>
+            <p className='text-xs text-slate-400 text-center'>
+                &copy; 2025 SpeechToText. All Rights Reserved.
+            </p>
         </footer>
-    )
-}
+    );
+};
 
-export default Footer
+export default Footer;

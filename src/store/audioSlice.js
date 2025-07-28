@@ -4,7 +4,8 @@ const initialValue = {
     _id: "",
     audio_file: "",
     transcript: "",
-    user: ""
+    user: "",
+    historyUpdated: false
 }
 
 const audioSlice = createSlice({
@@ -16,11 +17,13 @@ const audioSlice = createSlice({
             state.audio_file = action.payload.audio_file
             state.transcript = action.payload.transcript
             state.user = action.payload.user
-
+        },
+        setHistoryUpdate: (state) => {
+            state.historyUpdated = !state.historyUpdated
         }
     }
 })
 
-export const { setAudioDetails } = audioSlice.actions
+export const { setAudioDetails, setHistoryUpdate } = audioSlice.actions
 
 export default audioSlice.reducer

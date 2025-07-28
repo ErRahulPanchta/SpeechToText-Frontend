@@ -3,6 +3,8 @@ import App from "../App";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import History from "../pages/History";
+import IsUserLogin from "../pages/IsUserLogin";
 
 const router = createBrowserRouter([
     {
@@ -13,13 +15,17 @@ const router = createBrowserRouter([
                 path: "",
                 element: <Home />
             },
+            {
+                path: "history",
+                element: <IsUserLogin><History /></IsUserLogin>
+            }
         ]
     }, {
         path: "login",
         element: <Login />
     }, {
-        path:"register",
-        element:<Register/>
+        path: "register",
+        element: <Register />
     }
 ])
 

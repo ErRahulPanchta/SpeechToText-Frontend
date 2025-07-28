@@ -1,32 +1,33 @@
-import { Outlet } from "react-router-dom"
-import Header from "./components/Header"
-import Sidebar from "./components/Sidebar"
-import Footer from "./components/Footer"
+import { Outlet } from "react-router-dom";
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import Footer from "./components/Footer";
 import { Toaster } from 'react-hot-toast';
 import fetchUserDetails from "./utils/fetchUserDetails";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setUserDetails } from "./store/userSlice";
 import { useDispatch } from "react-redux";
 
 function App() {
   const dispatch = useDispatch();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const fetchUser = async () => {
     const userData = await fetchUserDetails();
     dispatch(setUserDetails(userData))
-  }
+  };
 
   useEffect(() => {
     fetchUser()
   }, []);
 
   return (
-    <div className="bg-slate-900 min-h-screen min-w-screen flex flex-1/2 overflow-hidden">
-      <div>
-        <Sidebar />
+    <div className="bg-slate-900 min-h-screen min-w-screen flex overflow-hidden">
+      <div className={`${sidebarOpen ? "block" : "hidden"} lg:block fixed lg:static z-50`}>
+        <Sidebar setSidebarOpen={setSidebarOpen} />
       </div>
-      <main className=" flex flex-col w-[75vw]">
-        <Header />
+      <main className="flex flex-col w-full lg:w-[75vw]">
+        <Header setSidebarOpen={setSidebarOpen} />
         <Outlet />
         <Footer />
       </main>
@@ -35,4 +36,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
