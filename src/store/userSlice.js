@@ -12,10 +12,11 @@ const userSlice = createSlice({
     initialState: initialValue,
     reducers: {
         setUserDetails: (state, action) => {
-            state.name = action.payload.name
-            state.email = action.payload.email
-            state._id = action.payload._id
-            state.profile_picture = action.payload.profile_picture
+            const user = action.payload || {};
+            state.name = action.payload.name || "";
+            state.email = action.payload.email || "";
+            state._id = action.payload._id || "";
+            state.profile_picture = action.payload.profile_picture || "";
 
         },
         logout: (state, action) => {

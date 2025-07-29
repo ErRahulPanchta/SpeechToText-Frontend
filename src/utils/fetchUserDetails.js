@@ -7,16 +7,17 @@ const fetchUserDetails = async () => {
             ...SummaryApi.userDetail
         });
 
+
         if (response?.data?.error) {
             console.error("Backend error:", response.data.message);
-            return null; 
+            return null;
         }
 
-        return response.data.data;
+        return response?.data?.data;
 
     } catch (error) {
         console.error("fetchUserDetails error:", error?.response?.data?.message || error.message);
-        return null; 
+        return null;
     }
 };
 

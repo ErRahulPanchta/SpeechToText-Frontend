@@ -13,12 +13,21 @@ function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const fetchUser = async () => {
-    const userData = await fetchUserDetails();
-    dispatch(setUserDetails(userData))
+    try {
+      const userData = await fetchUserDetails();
+      if (userData && userData._id) {
+        dispatch(setUserDetails(userData))
+      }
+    } catch (error) {
+      console.error("user fetch failed", error);
+    }
   };
 
   useEffect(() => {
-    fetchUser()
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      fetchUser()
+    }
   }, []);
 
   return (
