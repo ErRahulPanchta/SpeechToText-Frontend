@@ -68,7 +68,9 @@ const Sidebar = ({ setSidebarOpen }) => {
   };
 
   useEffect(() => {
-    if (user?._id) getHistory();
+    if (user?._id && userHistory) {
+      getHistory();
+    }
   }, [user, historyUpdated]);
 
   return (
